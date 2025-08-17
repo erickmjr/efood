@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import cores from './cores';
 
 const EstiloGlobal = createGlobalStyle`
 
@@ -8,6 +9,10 @@ const EstiloGlobal = createGlobalStyle`
         box-sizing: border-box;
         list-style: none;
         font-family: 'Sen', sans-serif;
+    }
+
+    body, html {
+        background-color: ${cores.branco1};
     }
 `;
 
