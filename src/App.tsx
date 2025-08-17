@@ -5,6 +5,7 @@ import EstiloGlobal from './styles/styles';
 
 import sushi from '../src/assets/background/sushi.png';
 import macarrao from '../src/assets/background/macarrao.png';
+import Footer from './components/Footer';
 
 const pratos: PratoClass[] = [
     {
@@ -55,6 +56,7 @@ function App() {
             <EstiloGlobal />
             <Header />
             <ListagemPratos pratos={pratos} />
+            <Footer />
         </>
     );
 }
