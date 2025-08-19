@@ -1,12 +1,10 @@
-import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import ListagemPratos from '../../components/ListagemPratos';
-import type PratoClass from '../../models/Prato';
-
+import ListagemRestaurantes from '../../components/ListagemRestaurantes';
 import sushi from '../../assets/background/sushi.png';
 import macarrao from '../../assets/background/macarrao.png';
+import type RestauranteClass from '../../models/Restaurante';
 
-const pratos: PratoClass[] = [
+const restaurantes: RestauranteClass[] = [
     {
         id: 1,
         titulo: 'Hioki sushi',
@@ -52,8 +50,7 @@ const pratos: PratoClass[] = [
 const Home = () => (
     <>
         <Header />
-        <ListagemPratos pratos={pratos} />
-        <Footer />
+        <ListagemRestaurantes restaurantes={restaurantes} />
     </>
 );
 

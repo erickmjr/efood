@@ -1,23 +1,22 @@
-import PratoClass from '../../models/Prato';
+import type PratoClass from '../../models/Prato';
+import { Listagem } from '../ListagemPratos/styles';
 import Prato from '../Prato';
-import { Listagem } from './styles';
 
-interface listagemProps {
+interface listagemPratosProps {
     pratos: PratoClass[];
 }
 
-const ListagemPratos = ({ pratos }: listagemProps) => (
+const ListagemPratos = ({ pratos }: listagemPratosProps) => (
     <Listagem>
         {pratos.map((prato) => (
             <Prato
                 key={prato.id}
                 titulo={prato.titulo}
                 descricao={prato.descricao}
-                img={prato.image}
-                estrelas={prato.estrelas}
-                tipo={prato.tipo}
-                ehDestaque={prato.ehDestaque}
-            />
+                imagem={prato.imagem}
+                valor={prato.valor}
+                descricaoModal={prato.descricaoModal}
+            ></Prato>
         ))}
     </Listagem>
 );

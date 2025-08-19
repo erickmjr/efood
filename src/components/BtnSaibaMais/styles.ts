@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import cores from '../../styles/cores';
+import { Link } from 'react-router-dom';
 
-export const SaibaMais = styled.button`
+export const StyledLink = styled(Link)`
     display: block;
     background-color: ${cores.salmao};
     color: ${cores.salmaoClaro};
@@ -10,4 +11,5 @@ export const SaibaMais = styled.button`
     border: none;
     cursor: pointer;
     font-size: 14px;
+    text-decoration: none;
 `;

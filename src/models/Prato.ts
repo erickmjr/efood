@@ -1,28 +1,25 @@
 class PratoClass {
-    titulo: string;
-    estrelas: number;
-    descricao: string;
-    tipo: string;
-    image: string;
     id: number;
-    ehDestaque: boolean;
+    titulo: string;
+    descricao: string;
+    imagem: string;
+    valor: number;
+    descricaoModal: string;
 
     constructor(
-        titulo: string,
-        estrelas: number,
-        descricao: string,
-        tipo: string,
-        image: string,
         id: number,
-        ehDestaque: boolean,
+        titulo: string,
+        descricao: string,
+        imagem: string,
+        valor: number,
+        descricaoModal: string,
     ) {
-        this.titulo = titulo;
-        this.estrelas = estrelas;
-        this.descricao = descricao;
-        this.tipo = tipo;
-        this.image = image;
         this.id = id;
-        this.ehDestaque = ehDestaque;
+        this.titulo = titulo;
+        this.descricao = descricao;
+        this.imagem = imagem;
+        this.valor = valor;
+        this.descricaoModal = descricaoModal;
     }
 }
 

@@ -1,5 +1,5 @@
-import { SaibaMais } from './styles';
+import { StyledLink } from './styles';
 
-const BtnSaibaMais = () => <SaibaMais type="button">Saiba mais</SaibaMais>;
+const BtnSaibaMais = () => <StyledLink to="/cardapio">Saiba mais</StyledLink>;
 
 export default BtnSaibaMais;

@@ -1,46 +1,44 @@
-import star from '../../assets/icons/star.png';
-import BtnSaibaMais from '../BtnSaibaMais';
-import {
-    ContainerImg,
-    ContainerInfos,
-    ContainerPrato,
-    InfosGerais,
-} from './styles';
+import { useState } from 'react';
+import pizza from '../../assets/background/pizza.png';
+import BtnDetalhes from '../BtnDetalhes';
+import { PratoStyled } from './styles';
+import Modal from '../Modal';
 
-export type PratoProps = {
+interface PratoProps {
+    imagem: string;
     titulo: string;
-    tipo: string;
-    estrelas: number;
     descricao: string;
-    img: string;
-    ehDestaque: boolean;
-};
+    valor: number;
+    descricaoModal: string;
+}
 
 const Prato = ({
+    imagem,
     titulo,
-    tipo,
-    estrelas,
     descricao,
-    img,
-    ehDestaque,
-}: PratoProps) => (
-    <ContainerPrato>
-        <ContainerImg img={img}>
-            {ehDestaque ? <p>Destaque da semana</p> : null}
-            <p>{tipo}</p>
-        </ContainerImg>
-        <ContainerInfos>
-            <InfosGerais>
-                <h4>{titulo}</h4>
-                <span>
-                    {estrelas}
-                    <img src={star} alt="Estrela" />
-                </span>
-            </InfosGerais>
-            <p>{descricao}</p>
-            <BtnSaibaMais />
-        </ContainerInfos>
-    </ContainerPrato>
-);
+    valor,
+    descricaoModal,
+}: PratoProps) => {
+    const [showModal, setShowModal] = useState(false);
+
+    return (
+        <>
+            <PratoStyled>
+                <img src={pizza} alt={titulo} />
+                <div>
+                    <h4>{titulo}</h4>
+                    <p>{descricao}</p>
+                    <BtnDetalhes onClick={() => setShowModal(!showModal)} />
+                </div>
+            </PratoStyled>
+            <Modal
+                image={imagem}
+                titulo={titulo}
+                valor={valor}
+                descricaoModal={descricaoModal}
+            />
+        </>
+    );
+};
 
 export default Prato;
