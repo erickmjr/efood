@@ -14,6 +14,7 @@ const EstiloGlobal = createGlobalStyle`
     body, html {
         background-color: ${cores.branco1};
     }
+
 `;
 
 export default EstiloGlobal;

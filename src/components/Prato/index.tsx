@@ -1,7 +1,6 @@
 import { useState } from 'react';
-import pizza from '../../assets/background/pizza.png';
 import BtnDetalhes from '../BtnDetalhes';
-import { PratoStyled } from './styles';
+import { Overlay, PratoStyled } from './styles';
 import Modal from '../Modal';
 
 interface PratoProps {
@@ -24,19 +23,27 @@ const Prato = ({
     return (
         <>
             <PratoStyled>
-                <img src={pizza} alt={titulo} />
+                <img src={imagem} alt={titulo} />
                 <div>
                     <h4>{titulo}</h4>
                     <p>{descricao}</p>
                     <BtnDetalhes onClick={() => setShowModal(!showModal)} />
                 </div>
             </PratoStyled>
-            <Modal
-                image={imagem}
-                titulo={titulo}
-                valor={valor}
-                descricaoModal={descricaoModal}
-            />
+
+            {showModal && (
+                <>
+                    <Overlay onClick={() => setShowModal(false)} />
+                    <Modal
+                        image={imagem}
+                        titulo={titulo}
+                        valor={valor}
+                        descricaoModal={descricaoModal}
+                        descricao={descricao}
+                        onClose={() => setShowModal(!showModal)}
+                    />
+                </>
+            )}
         </>
     );
 };

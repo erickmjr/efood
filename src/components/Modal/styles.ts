@@ -26,19 +26,34 @@ export const ModalStyled = styled.div`
         height: 100%;
         max-height: 100%;
     }
+`;
 
-    div {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
+export const ContainerInfos = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-        h4 {
-            font-size: 18px;
-        }
+    h4 {
+        font-size: 18px;
+    }
 
-        p {
-            font-size: 14px;
-        }
+    p {
+        font-size: 14px;
+    }
+`;
+
+export const ContainerNomeBtn = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    button {
+        width: fit-content;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        color: ${cores.branco};
+        font-weight: bold;
+        font-size: 18px;
     }
 `;

@@ -4,12 +4,10 @@ interface BtnDetalhesProps {
     onClick: () => void;
 }
 
-const BtnDetalhes = ({ onClick }: BtnDetalhesProps) => {
-    return (
-        <ButtonStyled type="button" onClick={onClick}>
-            Adicionar ao carrinho
-        </ButtonStyled>
-    );
-};
+const BtnDetalhes = ({ onClick }: BtnDetalhesProps) => (
+    <ButtonStyled type="button" onClick={onClick}>
+        Mais detalhes
+    </ButtonStyled>
+);
 
 export default BtnDetalhes;

@@ -67,12 +67,14 @@ const pratos: PratoClass[] = [
     },
 ];
 
-const Cardapio = () => (
-    <>
-        <HeaderCardapio />
-        <Hero />
-        <ListagemPratos pratos={pratos} />
-    </>
-);
+const Cardapio = () => {
+    return (
+        <>
+            <HeaderCardapio />
+            <Hero />
+            <ListagemPratos pratos={pratos} />
+        </>
+    );
+};
 
 export default Cardapio;
