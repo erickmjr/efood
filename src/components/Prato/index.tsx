@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import BtnDetalhes from '../BtnDetalhes';
-import { Overlay, PratoStyled } from './styles';
+import { PratoStyled } from './styles';
 import Modal from '../Modal';
+import { Overlay } from '../Overlay';
 
 interface PratoProps {
     imagem: string;

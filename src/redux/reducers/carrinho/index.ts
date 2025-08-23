@@ -16,7 +16,12 @@ const carrinhoSlice = createSlice({
             };
             state.push(pratoNovo);
         },
-        remover: (state, action: PayloadAction<PratoClass>) => {
+        remover: (
+            state,
+            action: PayloadAction<
+                Omit<PratoClass, 'descricao' | 'descricaoModal'>
+            >,
+        ) => {
             return (state = state.filter(
                 (prato) => prato.id != action.payload.id,
             ));
