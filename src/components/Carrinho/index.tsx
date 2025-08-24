@@ -5,6 +5,7 @@ import {
     ContainerLista,
     ListaCarrinho,
     ContainerValor,
+    BtnEntrega,
 } from './styles';
 import ItemCarrinho from '../ItemCarrinho';
 
@@ -29,11 +30,19 @@ const Carrinho = () => {
                         ))}
                     </ListaCarrinho>
                 </ContainerLista>
-                <ContainerValor>
-                    <p>Valor Total</p>
-                    <p>R$ {valorTotal.toFixed(2)}</p>
-                </ContainerValor>
-                <button type="button">Continuar com a entrega</button>
+                {valorTotal > 0 ? (
+                    <>
+                        <ContainerValor>
+                            <p>Valor Total</p>
+                            <p>R$ {valorTotal.toFixed(2)}</p>
+                        </ContainerValor>
+                        <BtnEntrega type="button">
+                            Continuar com a entrega
+                        </BtnEntrega>
+                    </>
+                ) : (
+                    <p>Seu carrinho está vazio...</p>
+                )}
             </CarrinhoStyled>
         </>
     );

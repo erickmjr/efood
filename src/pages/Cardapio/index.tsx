@@ -3,7 +3,6 @@ import Hero from '../../components/Hero';
 import ListagemPratos from '../../components/ListagemPratos';
 import PratoClass from '../../models/Prato';
 import pizza from '../../assets/background/pizza.png';
-import Carrinho from '../../components/Carrinho';
 
 const pratos: PratoClass[] = [
     {
@@ -74,7 +73,6 @@ const Cardapio = () => {
             <HeaderCardapio />
             <Hero />
             <ListagemPratos pratos={pratos} />
-            <Carrinho />
         </>
     );
 };
