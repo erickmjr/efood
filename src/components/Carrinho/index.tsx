@@ -8,6 +8,11 @@ import {
     BtnEntrega,
 } from './styles';
 import ItemCarrinho from '../ItemCarrinho';
+import { useState } from 'react';
+import FormEntrega from '../FormEntrega';
+import FormPagamento from '../FormPagamento';
+import InfosPedido from '../InfosPedido';
+import { Overlay } from '../Overlay';
 
 const Carrinho = () => {
     const carrinho = useSelector((state: RootReducer) => state.carrinho);
@@ -15,35 +20,81 @@ const Carrinho = () => {
 
     carrinho.map((item) => (valorTotal += item.valor));
 
+    const [showCarrinho, setShowCarrinho] = useState(true);
+    const [showLista, setShowLista] = useState(true);
+    const [showEntrega, setShowEntrega] = useState(false);
+    const [showPagamento, setShowPagamento] = useState(false);
+    const [showInfosPedido, setShowInfosPedido] = useState(false);
+
     return (
         <>
-            <CarrinhoStyled>
-                <ContainerLista>
-                    <ListaCarrinho>
-                        {carrinho.map((item) => (
-                            <ItemCarrinho
-                                titulo={item.titulo}
-                                valor={item.valor}
-                                imagem={item.imagem}
-                                id={item.id}
+            {showCarrinho && (
+                <>
+                    <Overlay onClick={() => setShowCarrinho(!showCarrinho)} />
+                    <CarrinhoStyled>
+                        {showInfosPedido ? (
+                            <InfosPedido
+                                onClick={() => setShowCarrinho(!showCarrinho)}
                             />
-                        ))}
-                    </ListaCarrinho>
-                </ContainerLista>
-                {valorTotal > 0 ? (
-                    <>
-                        <ContainerValor>
-                            <p>Valor Total</p>
-                            <p>R$ {valorTotal.toFixed(2)}</p>
-                        </ContainerValor>
-                        <BtnEntrega type="button">
-                            Continuar com a entrega
-                        </BtnEntrega>
-                    </>
-                ) : (
-                    <p>Seu carrinho está vazio...</p>
-                )}
-            </CarrinhoStyled>
+                        ) : showPagamento ? (
+                            <FormPagamento
+                                onClickProximo={() => {
+                                    setShowPagamento(!showPagamento);
+                                    setShowInfosPedido(!showInfosPedido);
+                                }}
+                                onClickVoltar={() => {
+                                    setShowEntrega(!showEntrega);
+                                    setShowPagamento(!showPagamento);
+                                }}
+                                valor={valorTotal}
+                            />
+                        ) : showEntrega ? (
+                            <>
+                                <FormEntrega
+                                    onClickProximo={() => {
+                                        setShowEntrega(!showEntrega);
+                                        setShowPagamento(!showPagamento);
+                                    }}
+                                    onClickVoltar={() => {
+                                        setShowEntrega(!showEntrega);
+                                        setShowLista(!showLista);
+                                    }}
+                                />
+                            </>
+                        ) : valorTotal > 0 && showLista ? (
+                            <>
+                                <ContainerLista>
+                                    <ListaCarrinho>
+                                        {carrinho.map((item) => (
+                                            <ItemCarrinho
+                                                titulo={item.titulo}
+                                                valor={item.valor}
+                                                imagem={item.imagem}
+                                                id={item.id}
+                                            />
+                                        ))}
+                                    </ListaCarrinho>
+                                </ContainerLista>
+                                <ContainerValor>
+                                    <p>Valor Total</p>
+                                    <p>R$ {valorTotal.toFixed(2)}</p>
+                                </ContainerValor>
+                                <BtnEntrega
+                                    type="button"
+                                    onClick={() => {
+                                        setShowEntrega(!showEntrega);
+                                        setShowLista(!showLista);
+                                    }}
+                                >
+                                    Continuar com a entrega
+                                </BtnEntrega>
+                            </>
+                        ) : (
+                            <p>Seu carrinho está vazio...</p>
+                        )}
+                    </CarrinhoStyled>
+                </>
+            )}
         </>
     );
 };

@@ -15,6 +15,17 @@ const EstiloGlobal = createGlobalStyle`
         background-color: ${cores.branco1};
     }
 
+    button {
+        cursor: pointer;
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .hide {
+        display: none;
+    }
 `;
 
 export default EstiloGlobal;

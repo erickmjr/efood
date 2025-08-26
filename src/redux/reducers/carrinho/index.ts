@@ -26,9 +26,15 @@ const carrinhoSlice = createSlice({
                 (prato) => prato.id != action.payload.id,
             ));
         },
+        limpar: (state) => {
+            for (let i = 0; i <= state.length; i++) {
+                state.pop();
+            }
+            return state;
+        },
     },
 });
 
-export const { adicionar, remover } = carrinhoSlice.actions;
+export const { adicionar, remover, limpar } = carrinhoSlice.actions;
 
 export default carrinhoSlice.reducer;

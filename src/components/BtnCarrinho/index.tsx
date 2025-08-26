@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import { BtnCarrinhoStyled } from './styles';
 import { useState } from 'react';
 import Carrinho from '../Carrinho';
-import { Overlay } from '../Overlay';
 
 const BtnCarrinho = () => {
     const qtdItens = useSelector((state: RootReducer) => state.carrinho.length);
@@ -18,7 +17,6 @@ const BtnCarrinho = () => {
 
             {showCarrinho && (
                 <>
-                    <Overlay onClick={() => setShowCarrinho(!showCarrinho)} />
                     <Carrinho />
                 </>
             )}
