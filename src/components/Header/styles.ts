@@ -17,8 +17,10 @@ export const HeaderStyled = styled.header`
     }
 
     p {
-        font-size: 28px;
-        line-height: 100%;
+        font-size: 36px;
+        text-align: center;
         color: ${cores.salmao};
+        max-width: 539px;
+        font-weight: bold;
     }
 `;

@@ -18,13 +18,14 @@ export const HeroStyled = styled.div`
     background-color: rgba(0, 0, 0, 0.5);
 
     h2 {
-        font-size: 28px;
-        font-weight: normal;
+        font-size: 32px;
+        font-weight: 100;
         z-index: 1;
     }
 
     h3 {
-        font-weight: bold;
+        font-size: 32px;
+        font-weight: 900;
         z-index: 1;
     }
 

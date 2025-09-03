@@ -9,6 +9,7 @@ export const ContainerRestaurante = styled.div`
     flex-direction: column;
     color: ${cores.salmao};
     gap: 12px;
+    max-width: 472px;
 `;
 
 export const ContainerImg = styled.div<ContainerImgProps>`

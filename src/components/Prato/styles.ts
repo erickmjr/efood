@@ -12,6 +12,8 @@ export const PratoStyled = styled.div`
 
     padding: 8px;
 
+    width: 320px;
+
     img {
         width: 100%;
         margin-bottom: 8px;
