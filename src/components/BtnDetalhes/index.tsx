@@ -2,11 +2,12 @@ import { ButtonStyled } from './styles';
 
 interface BtnDetalhesProps {
     onClick: () => void;
+    texto: string;
 }
 
-const BtnDetalhes = ({ onClick }: BtnDetalhesProps) => (
+const BtnDetalhes = ({ onClick, texto }: BtnDetalhesProps) => (
     <ButtonStyled type="button" onClick={onClick}>
-        Mais detalhes
+        {texto}
     </ButtonStyled>
 );
 

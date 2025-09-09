@@ -7,11 +7,28 @@ export const FooterStyled = styled.footer`
     padding: 16px;
     text-align: center;
     font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 298px;
 
-    img {
-        height: 57.5px;
-        margin-bottom: 3rem;
+    p {
+        margin: 0 auto;
+        max-width: 480px;
     }
+`;
+
+export const ContainerLogoRedes = styled.div`
+    & > img {
+        height: 57.5px;
+        width: 125px;
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32.5px;
 `;
 
 export const RedesSociais = styled.div`
@@ -20,6 +37,6 @@ export const RedesSociais = styled.div`
     gap: 8px;
 
     img {
-        height: 28px;
+        height: 24px;
     }
 `;

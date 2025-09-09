@@ -9,18 +9,28 @@ export const PratoStyled = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0 auto;
 
     padding: 8px;
 
     width: 320px;
+    height: 338px;
 
     img {
-        width: 100%;
+        object-fit: cover;
+        width: 304px;
         margin-bottom: 8px;
+        height: 167px;
     }
 
     p {
-        margin-bottom: 8px;
         font-size: 14px;
     }
+`;
+
+export const ContainerInfosPrato = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
 `;

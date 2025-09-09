@@ -5,14 +5,16 @@ export const HeaderStyled = styled.header`
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     background-image: url(${background});
     background-size: contain;
     padding: 16px;
+    height: 384px;
 
     img {
         height: 57.5px;
+        width: 125px;
         margin-bottom: 3rem;
     }
 

@@ -11,4 +11,8 @@ export const ButtonStyled = styled.button`
     font-weight: bold;
     font-size: 14px;
     cursor: pointer;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;

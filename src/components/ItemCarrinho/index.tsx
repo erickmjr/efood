@@ -23,7 +23,7 @@ const ItemCarrinho = ({ imagem, titulo, valor, id }: itemProps) => {
             <img src={imagem} alt={titulo} />
             <ContainerItem>
                 <h5>{titulo}</h5>
-                <p>R$ {valor}</p>
+                <p>R$ {valor.toFixed(2)}</p>
                 <ContainerBtn>
                     <BtnRemover
                         onClick={() =>

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import BtnDetalhes from '../BtnDetalhes';
-import { PratoStyled } from './styles';
+import { ContainerInfosPrato, PratoStyled } from './styles';
 import Modal from '../Modal';
 import { Overlay } from '../Overlay';
 
@@ -25,11 +25,14 @@ const Prato = ({
         <>
             <PratoStyled>
                 <img src={imagem} alt={titulo} />
-                <div>
+                <ContainerInfosPrato>
                     <h4>{titulo}</h4>
                     <p>{descricao}</p>
-                    <BtnDetalhes onClick={() => setShowModal(!showModal)} />
-                </div>
+                    <BtnDetalhes
+                        onClick={() => setShowModal(!showModal)}
+                        texto={'Adicionar ao carrinho'}
+                    />
+                </ContainerInfosPrato>
             </PratoStyled>
 
             {showModal && (

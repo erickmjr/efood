@@ -7,14 +7,17 @@ export const HeaderCardapioStyled = styled.header`
 
     background-image: url(${background});
     background-size: contain;
-    padding: 16px;
+
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: ${cores.salmao};
 
+    height: 178px;
+
     img {
         height: 57.5px;
+        width: 125px;
     }
 
     a {

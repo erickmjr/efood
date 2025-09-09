@@ -1,7 +1,9 @@
 import type { EntregaProps } from '../FormEntrega';
 import {
     BtnAcao,
+    ContainerCVV,
     ContainerInput,
+    ContainerVencimento,
     FormContainer,
     FormStyled,
 } from '../FormEntrega/styles';
@@ -30,43 +32,49 @@ const FormPagamento = ({
                         name="pagamento-nome"
                     />
                 </ContainerInput>
-                <ContainerInput>
-                    <label htmlFor="pagamento-numero">Número do cartão</label>
-                    <input
-                        required
-                        type="number"
-                        id="pagamento-numero"
-                        name="pagamento-numero"
-                    />
-                </ContainerInput>
-                <ContainerInput>
-                    <label htmlFor="pagamento-cvv">CVV</label>
-                    <input
-                        required
-                        type="number"
-                        id="pagamento-cvv"
-                        name="pagamento-cvv"
-                        max={999}
-                    />
-                </ContainerInput>
-                <ContainerInput>
-                    <label htmlFor="pagamento-mes">Mês de vencimento</label>
-                    <input
-                        required
-                        type="number"
-                        id="pagamento-mes"
-                        name="pagamento-mes"
-                    />
-                </ContainerInput>
-                <ContainerInput>
-                    <label htmlFor="pagamento-ano">Ano de vencimento</label>
-                    <input
-                        required
-                        type="number"
-                        id="pagamento-ano"
-                        name="pagamento-ano"
-                    />
-                </ContainerInput>
+                <ContainerCVV>
+                    <ContainerInput>
+                        <label htmlFor="pagamento-numero">
+                            Número do cartão
+                        </label>
+                        <input
+                            required
+                            type="number"
+                            id="pagamento-numero"
+                            name="pagamento-numero"
+                        />
+                    </ContainerInput>
+                    <ContainerInput>
+                        <label htmlFor="pagamento-cvv">CVV</label>
+                        <input
+                            required
+                            type="number"
+                            id="pagamento-cvv"
+                            name="pagamento-cvv"
+                            max={999}
+                        />
+                    </ContainerInput>
+                </ContainerCVV>
+                <ContainerVencimento>
+                    <ContainerInput>
+                        <label htmlFor="pagamento-mes">Mês de vencimento</label>
+                        <input
+                            required
+                            type="number"
+                            id="pagamento-mes"
+                            name="pagamento-mes"
+                        />
+                    </ContainerInput>
+                    <ContainerInput>
+                        <label htmlFor="pagamento-ano">Ano de vencimento</label>
+                        <input
+                            required
+                            type="number"
+                            id="pagamento-ano"
+                            name="pagamento-ano"
+                        />
+                    </ContainerInput>
+                </ContainerVencimento>
                 <BtnAcao type="submit">Finalizar pagamento</BtnAcao>
             </FormStyled>
             <BtnAcao onClick={onClickVoltar}>

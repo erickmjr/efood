@@ -15,8 +15,9 @@ export const ItemCarrinhoStyled = styled.div`
     }
 
     img {
-        width: 90px;
+        width: 80px;
         height: 100%;
+        object-fit: cover;
     }
 `;
 

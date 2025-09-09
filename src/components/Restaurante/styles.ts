@@ -5,11 +5,13 @@ type ContainerImgProps = {
 };
 
 export const ContainerRestaurante = styled.div`
-    display: flex;
-    flex-direction: column;
     color: ${cores.salmao};
-    gap: 12px;
+    gap: 16px;
     max-width: 472px;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    margin: 0 auto;
 `;
 
 export const ContainerImg = styled.div<ContainerImgProps>`
@@ -21,8 +23,8 @@ export const ContainerImg = styled.div<ContainerImgProps>`
     display: flex;
     gap: 8px;
     justify-content: flex-end;
-    height: 260px;
-
+    height: 217px;
+    width: 472px;
     p {
         font-size: 12px;
         background-color: ${cores.salmao};
@@ -33,18 +35,25 @@ export const ContainerImg = styled.div<ContainerImgProps>`
 `;
 
 export const ContainerInfos = styled.div`
-    padding: 1dvh;
+    border: 1px solid ${cores.salmao};
+    padding: 8px;
     display: flex;
     flex-direction: column;
-    gap: 1dvh;
+    justify-content: space-between;
+    height: 181px;
 `;
 
 export const InfosGerais = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 26px;
-    height: fit-content;
+    font-size: 18px;
+
+    p {
+        font-size: 14px;
+        max-height: 88px;
+    }
+
     img {
         height: 21px;
     }

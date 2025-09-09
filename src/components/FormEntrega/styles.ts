@@ -7,6 +7,7 @@ export const FormContainer = styled.div`
     gap: 16px;
     width: 100%;
     color: ${cores.salmaoClaro};
+    font-weight: bold;
 
     label,
     input {
@@ -48,6 +49,31 @@ export const ContainerInput = styled.div`
     }
 `;
 
+export const ContainerCVV = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    div:nth-child(1) {
+        width: 228px;
+    }
+
+    div:nth-child(2) {
+        width: 87px;
+    }
+`;
+
+export const ContainerVencimento = styled.div`
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+
+    div:nth-child(1),
+    div:nth-child(2) {
+        width: 155px;
+    }
+`;
+
 export const BtnAcao = styled.button`
     width: 100%;
     background-color: ${cores.salmaoClaro};
@@ -56,4 +82,8 @@ export const BtnAcao = styled.button`
     font-weight: bold;
     padding: 8px;
     font-size: 14px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
