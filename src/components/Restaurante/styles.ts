@@ -25,6 +25,7 @@ export const ContainerImg = styled.div<ContainerImgProps>`
     justify-content: flex-end;
     height: 217px;
     width: 472px;
+
     p {
         font-size: 12px;
         background-color: ${cores.salmao};
