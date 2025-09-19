@@ -8,6 +8,7 @@ interface ModalProps {
     descricaoModal: string;
     descricao: string;
     valor: number;
+    porcao: string;
     onClose: () => void;
 }
 
@@ -17,6 +18,7 @@ const Modal = ({
     descricaoModal,
     descricao,
     valor,
+    porcao,
     onClose,
 }: ModalProps) => {
     const dispatch = useDispatch();
@@ -32,21 +34,23 @@ const Modal = ({
                     </button>
                 </ContainerNomeBtn>
                 <p>{descricaoModal}</p>
-                <p>Serve: de 2 a 3 pessoas</p>
-                <BtnAddCarrinho
-                    valor={valor}
-                    addCarrinho={() => {
-                        dispatch(
-                            adicionar({
-                                titulo,
-                                imagem: image,
-                                valor,
-                                descricaoModal,
-                                descricao,
-                            }),
-                        );
-                    }}
-                />
+                <p>Serve: {porcao}</p>
+                {
+                    <BtnAddCarrinho
+                        valor={valor}
+                        addCarrinho={() => {
+                            // dispatch(
+                            //     adicionar({
+                            //         titulo,
+                            //         imagem: image,
+                            //         valor,
+                            //         descricaoModal,
+                            //         descricao,
+                            //     }),
+                            // );
+                        }}
+                    />
+                }
             </ContainerInfos>
         </ModalStyled>
     );

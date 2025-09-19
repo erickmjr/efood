@@ -5,6 +5,7 @@ class PratoClass {
     imagem: string;
     valor: number;
     descricaoModal: string;
+    avaliacao: number;
 
     constructor(
         id: number,
@@ -13,6 +14,7 @@ class PratoClass {
         imagem: string,
         valor: number,
         descricaoModal: string,
+        avaliacao: number,
     ) {
         this.id = id;
         this.titulo = titulo;
@@ -20,6 +22,7 @@ class PratoClass {
         this.imagem = imagem;
         this.valor = valor;
         this.descricaoModal = descricaoModal;
+        this.avaliacao = avaliacao;
     }
 }
 

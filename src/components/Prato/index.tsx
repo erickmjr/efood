@@ -5,26 +5,20 @@ import Modal from '../Modal';
 import { Overlay } from '../Overlay';
 
 interface PratoProps {
-    imagem: string;
+    foto: string;
     titulo: string;
     descricao: string;
     valor: number;
-    descricaoModal: string;
+    porcao: string;
 }
 
-const Prato = ({
-    imagem,
-    titulo,
-    descricao,
-    valor,
-    descricaoModal,
-}: PratoProps) => {
+const Prato = ({ titulo, descricao, valor, foto, porcao }: PratoProps) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
             <PratoStyled>
-                <img src={imagem} alt={titulo} />
+                <img src={foto} alt={titulo} />
                 <ContainerInfosPrato>
                     <h4>{titulo}</h4>
                     <p>{descricao}</p>
@@ -39,11 +33,12 @@ const Prato = ({
                 <>
                     <Overlay onClick={() => setShowModal(false)} />
                     <Modal
-                        image={imagem}
+                        image={foto}
                         titulo={titulo}
                         valor={valor}
-                        descricaoModal={descricaoModal}
+                        descricaoModal={descricao}
                         descricao={descricao}
+                        porcao={porcao}
                         onClose={() => setShowModal(!showModal)}
                     />
                 </>

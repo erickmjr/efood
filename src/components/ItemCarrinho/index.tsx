@@ -25,7 +25,7 @@ const ItemCarrinho = ({ imagem, titulo, valor, id }: itemProps) => {
                 <h5>{titulo}</h5>
                 <p>R$ {valor.toFixed(2)}</p>
                 <ContainerBtn>
-                    <BtnRemover
+                    {/* <BtnRemover
                         onClick={() =>
                             dispatch(
                                 remover({
@@ -38,7 +38,7 @@ const ItemCarrinho = ({ imagem, titulo, valor, id }: itemProps) => {
                         }
                     >
                         <img src={lixeira} alt="Apagar" />
-                    </BtnRemover>
+                    </BtnRemover> */}
                 </ContainerBtn>
             </ContainerItem>
         </ItemCarrinhoStyled>

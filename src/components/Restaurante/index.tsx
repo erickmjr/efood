@@ -6,41 +6,36 @@ import {
     ContainerRestaurante,
     InfosGerais,
 } from './styles';
-
-export type RestauranteProps = {
-    titulo: string;
-    tipo: string;
-    estrelas: number;
-    descricao: string;
-    img: string;
-    ehDestaque: boolean;
-};
+import type { RestauranteAPI } from '../../models/RestauranteInterface';
 
 const Restaurante = ({
+    id,
     titulo,
-    tipo,
-    estrelas,
     descricao,
-    img,
-    ehDestaque,
-}: RestauranteProps) => (
-    <ContainerRestaurante>
-        <ContainerImg img={img}>
-            {ehDestaque ? <p>Destaque da semana</p> : null}
-            <p>{tipo}</p>
-        </ContainerImg>
-        <ContainerInfos>
-            <InfosGerais>
-                <h4>{titulo}</h4>
-                <span>
-                    {estrelas}
-                    <img src={star} alt="Estrela" />
-                </span>
-            </InfosGerais>
-            <p>{descricao}</p>
-            <BtnSaibaMais />
-        </ContainerInfos>
-    </ContainerRestaurante>
-);
+    capa,
+    avaliacao,
+    tipo,
+    destacado,
+}: Omit<RestauranteAPI, 'cardapio'>) => {
+    return (
+        <ContainerRestaurante>
+            <ContainerImg img={capa}>
+                {destacado ? <p>Destaque da semana</p> : null}
+                <p>{tipo}</p>
+            </ContainerImg>
+            <ContainerInfos>
+                <InfosGerais>
+                    <h4>{titulo}</h4>
+                    <span>
+                        {avaliacao}
+                        <img src={star} alt={`${avaliacao} estrelas`} />
+                    </span>
+                </InfosGerais>
+                <p>{descricao}</p>
+                <BtnSaibaMais destino={id} />
+            </ContainerInfos>
+        </ContainerRestaurante>
+    );
+};
 
 export default Restaurante;

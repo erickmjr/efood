@@ -1,24 +1,24 @@
-import type PratoClass from '../../models/Prato';
+import type { RestauranteAPI } from '../../models/RestauranteInterface';
 import { Listagem } from '../ListagemPratos/styles';
 import Prato from '../Prato';
 
-interface listagemPratosProps {
-    pratos: PratoClass[];
-}
+type Cardapio = Pick<RestauranteAPI, 'cardapio'>;
 
-const ListagemPratos = ({ pratos }: listagemPratosProps) => (
-    <Listagem>
-        {pratos.map((prato) => (
-            <Prato
-                key={prato.id}
-                titulo={prato.titulo}
-                descricao={prato.descricao}
-                imagem={prato.imagem}
-                valor={prato.valor}
-                descricaoModal={prato.descricaoModal}
-            ></Prato>
-        ))}
-    </Listagem>
-);
+const ListagemPratos = ({ cardapio }: Cardapio) => {
+    return (
+        <Listagem>
+            {cardapio.map((prato, index) => (
+                <Prato
+                    key={prato.id ?? index}
+                    titulo={prato.nome}
+                    descricao={prato.descricao}
+                    valor={prato.preco}
+                    foto={prato.foto}
+                    porcao={prato.porcao}
+                ></Prato>
+            ))}
+        </Listagem>
+    );
+};
 
 export default ListagemPratos;

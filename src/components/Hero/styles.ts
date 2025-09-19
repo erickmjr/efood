@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import macarrao from '../../assets/background/macarrao.png';
 import cores from '../../styles/cores';
 
-export const HeroStyled = styled.div`
+type BgProps = {
+    capa: string;
+};
+
+export const HeroStyled = styled.div<BgProps>`
     position: relative;
-    background-image: url(${macarrao});
+    background-image: url(${(props) => props.capa});
     background-repeat: no-repeat;
     background-size: cover;
     height: 280px;

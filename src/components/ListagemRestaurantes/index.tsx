@@ -1,9 +1,9 @@
-import type RestauranteClass from '../../models/Restaurante';
+import type { RestauranteAPI } from '../../models/RestauranteInterface';
 import Restaurante from '../Restaurante';
 import { Listagem } from './styles';
 
 interface listagemProps {
-    restaurantes: RestauranteClass[];
+    restaurantes: RestauranteAPI[];
 }
 
 const ListagemRestaurantes = ({ restaurantes }: listagemProps) => (
@@ -11,12 +11,13 @@ const ListagemRestaurantes = ({ restaurantes }: listagemProps) => (
         {restaurantes.map((restaurante) => (
             <Restaurante
                 key={restaurante.id}
+                id={restaurante.id}
                 titulo={restaurante.titulo}
                 descricao={restaurante.descricao}
-                img={restaurante.image}
-                estrelas={restaurante.estrelas}
+                capa={restaurante.capa}
+                avaliacao={restaurante.avaliacao}
                 tipo={restaurante.tipo}
-                ehDestaque={restaurante.ehDestaque}
+                destacado={restaurante.destacado}
             />
         ))}
     </Listagem>
