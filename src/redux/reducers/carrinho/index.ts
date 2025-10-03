@@ -1,25 +1,35 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
-import PratoClass from '../../../models/Prato';
+import type { Prato } from '../../../models/Prato';
 
-const initialState: PratoClass[] = [];
+const initialState: Prato[] = [];
 
 const carrinhoSlice = createSlice({
     name: 'carrinho',
     initialState,
     reducers: {
-        adicionar: (state, action: PayloadAction<Omit<PratoClass, 'id'>>) => {
+        adicionar: (state, action: PayloadAction<Prato>) => {
             const ultimoPrato = state[state.length - 1];
 
             const pratoNovo = {
                 ...action.payload,
                 id: ultimoPrato ? ultimoPrato.id + 1 : 1,
             };
-            state.push(pratoNovo);
+
+            const pratoExistente = state.find(
+                (item) => item.nome == action.payload.nome,
+            );
+
+            if (pratoExistente) {
+                pratoExistente.quantidade++;
+            } else {
+                pratoNovo.quantidade = 1;
+                state.push(pratoNovo);
+            }
         },
         remover: (
             state,
             action: PayloadAction<
-                Omit<PratoClass, 'descricao' | 'descricaoModal'>
+                Omit<Prato, 'descricao' | 'porcao' | 'quantidade'>
             >,
         ) => {
             return (state = state.filter(

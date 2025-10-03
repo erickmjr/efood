@@ -6,7 +6,7 @@ import {
     ContainerRestaurante,
     InfosGerais,
 } from './styles';
-import type { RestauranteAPI } from '../../models/RestauranteInterface';
+import type { RestauranteType } from '../../models/Restaurante';
 
 const Restaurante = ({
     id,
@@ -16,7 +16,7 @@ const Restaurante = ({
     avaliacao,
     tipo,
     destacado,
-}: Omit<RestauranteAPI, 'cardapio'>) => {
+}: Omit<RestauranteType, 'cardapio'>) => {
     return (
         <ContainerRestaurante>
             <ContainerImg img={capa}>

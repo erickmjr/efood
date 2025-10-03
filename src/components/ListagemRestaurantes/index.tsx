@@ -1,9 +1,9 @@
-import type { RestauranteAPI } from '../../models/RestauranteInterface';
+import type { RestauranteType } from '../../models/Restaurante';
 import Restaurante from '../Restaurante';
 import { Listagem } from './styles';
 
 interface listagemProps {
-    restaurantes: RestauranteAPI[];
+    restaurantes: RestauranteType[];
 }
 
 const ListagemRestaurantes = ({ restaurantes }: listagemProps) => (

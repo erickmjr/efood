@@ -24,7 +24,7 @@ export const PratoStyled = styled.div`
 
     p {
         font-size: 14px;
-        height: 110px;
+        height: 125px;
     }
 `;
 

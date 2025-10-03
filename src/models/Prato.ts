@@ -1,29 +1,9 @@
-class PratoClass {
+export interface Prato {
+    foto: string;
+    preco: number;
     id: number;
-    titulo: string;
+    nome: string;
     descricao: string;
-    imagem: string;
-    valor: number;
-    descricaoModal: string;
-    avaliacao: number;
-
-    constructor(
-        id: number,
-        titulo: string,
-        descricao: string,
-        imagem: string,
-        valor: number,
-        descricaoModal: string,
-        avaliacao: number,
-    ) {
-        this.id = id;
-        this.titulo = titulo;
-        this.descricao = descricao;
-        this.imagem = imagem;
-        this.valor = valor;
-        this.descricaoModal = descricaoModal;
-        this.avaliacao = avaliacao;
-    }
+    porcao: string;
+    quantidade: number;
 }
-
-export default PratoClass;

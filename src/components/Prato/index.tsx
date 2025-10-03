@@ -5,22 +5,32 @@ import Modal from '../Modal';
 import { Overlay } from '../Overlay';
 
 interface PratoProps {
+    id: number;
     foto: string;
-    titulo: string;
+    nome: string;
     descricao: string;
-    valor: number;
+    preco: number;
     porcao: string;
+    quantidade: number;
 }
 
-const Prato = ({ titulo, descricao, valor, foto, porcao }: PratoProps) => {
+const Prato = ({
+    id,
+    nome,
+    descricao,
+    preco,
+    foto,
+    porcao,
+    quantidade,
+}: PratoProps) => {
     const [showModal, setShowModal] = useState(false);
 
     return (
         <>
             <PratoStyled>
-                <img src={foto} alt={titulo} />
+                <img src={foto} alt={nome} />
                 <ContainerInfosPrato>
-                    <h4>{titulo}</h4>
+                    <h4>{nome}</h4>
                     <p>{descricao}</p>
                     <BtnDetalhes
                         onClick={() => setShowModal(!showModal)}
@@ -33,12 +43,13 @@ const Prato = ({ titulo, descricao, valor, foto, porcao }: PratoProps) => {
                 <>
                     <Overlay onClick={() => setShowModal(false)} />
                     <Modal
-                        image={foto}
-                        titulo={titulo}
-                        valor={valor}
-                        descricaoModal={descricao}
+                        id={id}
+                        foto={foto}
+                        nome={nome}
+                        preco={preco}
                         descricao={descricao}
                         porcao={porcao}
+                        quantidade={quantidade}
                         onClose={() => setShowModal(!showModal)}
                     />
                 </>

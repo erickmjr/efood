@@ -10,35 +10,39 @@ import {
 } from './styles';
 
 interface itemProps {
-    imagem: string;
-    titulo: string;
-    valor: number;
+    foto: string;
+    nome: string;
+    preco: number;
     id: number;
+    quantidade: number;
 }
 
-const ItemCarrinho = ({ imagem, titulo, valor, id }: itemProps) => {
+const ItemCarrinho = ({ foto, nome, preco, id, quantidade }: itemProps) => {
     const dispatch = useDispatch();
     return (
         <ItemCarrinhoStyled>
-            <img src={imagem} alt={titulo} />
+            <img src={foto} alt={nome} />
             <ContainerItem>
-                <h5>{titulo}</h5>
-                <p>R$ {valor.toFixed(2)}</p>
+                <h5>{nome}</h5>
+                <p>R$ {preco.toFixed(2)}</p>
+                <p>Quantidade: {quantidade}</p>
                 <ContainerBtn>
-                    {/* <BtnRemover
-                        onClick={() =>
-                            dispatch(
-                                remover({
-                                    titulo: titulo,
-                                    imagem: imagem,
-                                    valor: valor,
-                                    id: id,
-                                }),
-                            )
-                        }
-                    >
-                        <img src={lixeira} alt="Apagar" />
-                    </BtnRemover> */}
+                    {
+                        <BtnRemover
+                            onClick={() =>
+                                dispatch(
+                                    remover({
+                                        nome,
+                                        foto,
+                                        preco,
+                                        id,
+                                    }),
+                                )
+                            }
+                        >
+                            <img src={lixeira} alt="Apagar" />
+                        </BtnRemover>
+                    }
                 </ContainerBtn>
             </ContainerItem>
         </ItemCarrinhoStyled>

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import HeaderCardapio from '../../components/HeaderCardapio';
 import Hero from '../../components/Hero';
 import ListagemPratos from '../../components/ListagemPratos';
-import type { RestauranteAPI } from '../../models/RestauranteInterface';
+import type { RestauranteAPI } from '../../models/Restaurante';
 
 const Cardapio = () => {
     const { id } = useParams();

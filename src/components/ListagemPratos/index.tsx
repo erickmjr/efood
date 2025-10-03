@@ -1,8 +1,8 @@
-import type { RestauranteAPI } from '../../models/RestauranteInterface';
+import type { Restaurante } from '../../models/Restaurante';
 import { Listagem } from '../ListagemPratos/styles';
 import Prato from '../Prato';
 
-type Cardapio = Pick<RestauranteAPI, 'cardapio'>;
+type Cardapio = Pick<Restaurante, 'cardapio'>;
 
 const ListagemPratos = ({ cardapio }: Cardapio) => {
     return (
@@ -10,11 +10,13 @@ const ListagemPratos = ({ cardapio }: Cardapio) => {
             {cardapio.map((prato, index) => (
                 <Prato
                     key={prato.id ?? index}
-                    titulo={prato.nome}
+                    id={prato.id}
+                    nome={prato.nome}
                     descricao={prato.descricao}
-                    valor={prato.preco}
+                    preco={prato.preco}
                     foto={prato.foto}
                     porcao={prato.porcao}
+                    quantidade={prato.quantidade}
                 ></Prato>
             ))}
         </Listagem>
