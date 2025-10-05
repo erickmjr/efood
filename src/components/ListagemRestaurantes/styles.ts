@@ -6,4 +6,6 @@ export const Listagem = styled.section`
     grid-row-gap: 48px;
     grid-column-gap: 80px;
     padding: 80px 171px 120px 171px;
+    width: fit-content;
+    margin: 0 auto;
 `;
