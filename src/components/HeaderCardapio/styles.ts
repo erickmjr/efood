@@ -26,3 +26,11 @@ export const HeaderCardapioStyled = styled.header`
         text-decoration: none;
     }
 `;
+
+export const Container = styled.div`
+    width: 1024px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
