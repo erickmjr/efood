@@ -1,9 +1,11 @@
-import { HeroStyled } from './styles';
+import { Container, HeroStyled } from './styles';
 
 const Hero = () => (
     <HeroStyled>
-        <h2>Italiana</h2>
-        <h3>La Dolce Vita Trattoria</h3>
+        <Container>
+            <h2>Italiana</h2>
+            <h3>La Dolce Vita Trattoria</h3>
+        </Container>
     </HeroStyled>
 );
 

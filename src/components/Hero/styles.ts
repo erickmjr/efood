@@ -10,10 +10,6 @@ export const HeroStyled = styled.div`
     height: 280px;
     background-position: left center;
     color: ${cores.branco};
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 25px 170px;
     font-size: 32px;
     background-color: rgba(0, 0, 0, 0.5);
 
@@ -40,3 +36,13 @@ export const HeroStyled = styled.div`
         background-color: rgba(0, 0, 0, 0.5);
     }
 `;
+
+export const Container = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1024px;
+    margin: 0 auto;
+    padding: 25px 0;
+`
