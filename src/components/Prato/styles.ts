@@ -14,7 +14,6 @@ export const PratoStyled = styled.div`
     padding: 8px;
 
     width: 320px;
-    height: 338px;
 
     img {
         object-fit: cover;
@@ -25,12 +24,15 @@ export const PratoStyled = styled.div`
 
     p {
         font-size: 14px;
+        height: 125px;
     }
 `;
 
 export const ContainerInfosPrato = styled.div`
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
+    padding: 0;
 `;

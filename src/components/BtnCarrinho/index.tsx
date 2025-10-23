@@ -5,7 +5,9 @@ import { useState } from 'react';
 import Carrinho from '../Carrinho';
 
 const BtnCarrinho = () => {
-    const qtdItens = useSelector((state: RootReducer) => state.carrinho.length);
+    const qtdItens = useSelector((state: RootReducer) =>
+        state.carrinho.reduce((total, item) => (total += item.quantidade), 0),
+    );
 
     const [showCarrinho, setShowCarrinho] = useState(false);
 

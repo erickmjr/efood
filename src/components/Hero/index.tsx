@@ -1,11 +1,15 @@
 import { Container, HeroStyled } from './styles';
 
-const Hero = () => (
-    <HeroStyled>
-        <Container>
-            <h2>Italiana</h2>
-            <h3>La Dolce Vita Trattoria</h3>
-        </Container>
+type HeroProps = {
+    tipo: string;
+    nome: string;
+    capa: string;
+};
+
+const Hero = ({ tipo, nome, capa }: HeroProps) => (
+    <HeroStyled capa={capa}>
+        <h2>{tipo}</h2>
+        <h3>{nome}</h3>
     </HeroStyled>
 );
 

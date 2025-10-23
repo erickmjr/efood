@@ -18,7 +18,7 @@ const Carrinho = () => {
     const carrinho = useSelector((state: RootReducer) => state.carrinho);
     let valorTotal: number = 0;
 
-    carrinho.map((item) => (valorTotal += item.valor));
+    carrinho.map((item) => (valorTotal += item.preco * item.quantidade));
 
     const [showCarrinho, setShowCarrinho] = useState(true);
     const [showLista, setShowLista] = useState(true);
@@ -67,9 +67,10 @@ const Carrinho = () => {
                                     <ListaCarrinho>
                                         {carrinho.map((item) => (
                                             <ItemCarrinho
-                                                titulo={item.titulo}
-                                                valor={item.valor}
-                                                imagem={item.imagem}
+                                                quantidade={item.quantidade}
+                                                nome={item.nome}
+                                                preco={item.preco}
+                                                foto={item.foto}
                                                 id={item.id}
                                             />
                                         ))}
