@@ -8,8 +8,10 @@ type HeroProps = {
 
 const Hero = ({ tipo, nome, capa }: HeroProps) => (
     <HeroStyled capa={capa}>
-        <h2>{tipo}</h2>
-        <h3>{nome}</h3>
+        <Container>
+            <h2>{tipo}</h2>
+            <h3>{nome}</h3>
+        </Container>
     </HeroStyled>
 );
 
