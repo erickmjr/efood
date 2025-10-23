@@ -1,8 +1,8 @@
-import type { Restaurante } from '../../models/Restaurante';
+import type { RestauranteType } from '../../models/Restaurante';
 import { Listagem } from '../ListagemPratos/styles';
 import Prato from '../Prato';
 
-type Cardapio = Pick<Restaurante, 'cardapio'>;
+type Cardapio = Pick<RestauranteType, 'cardapio'>;
 
 const ListagemPratos = ({ cardapio }: Cardapio) => {
     return (
