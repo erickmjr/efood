@@ -3,14 +3,14 @@ import { useParams } from 'react-router-dom';
 import HeaderCardapio from '../../components/HeaderCardapio';
 import Hero from '../../components/Hero';
 import ListagemPratos from '../../components/ListagemPratos';
-import type { RestauranteAPI } from '../../models/Restaurante';
+import type { RestauranteType } from '../../models/Restaurante';
 
 const Cardapio = () => {
     const { id } = useParams();
-    const [restaurante, setRestaurante] = useState<RestauranteAPI>();
+    const [restaurante, setRestaurante] = useState<RestauranteType>();
 
     useEffect(() => {
-        fetch(`https://ebac-fake-api.vercel.app/api/efood/restaurantes/${id}`)
+        fetch(`https://api-ebac.vercel.app/api/efood/restaurantes/${id}`)
             .then((res) => res.json())
             .then((res) => setRestaurante(res));
     }, [id]);
