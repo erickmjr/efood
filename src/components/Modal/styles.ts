@@ -22,9 +22,8 @@ export const ModalStyled = styled.div`
 
     border-radius: 8px;
     img {
-        width: 35%;
-        height: 100%;
-        max-height: 100%;
+        width: 280px;
+        height: 280px;
     }
 `;
 
