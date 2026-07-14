@@ -1,21 +1,19 @@
 import { BtnAcao, FormContainer } from '../FormEntrega/styles';
 import { useDispatch } from 'react-redux';
 import { limpar } from '../../redux/reducers/carrinho';
-import { useSelector } from 'react-redux';
-import type { RootReducer } from '../../redux/store';
+import type { PedidoResponse } from '../../models/Pedido';
 
 interface infosPedidoProps {
     onClick: () => void;
+    pedido: PedidoResponse | null;
 }
 
-const InfosPedido = ({ onClick }: infosPedidoProps) => {
+const InfosPedido = ({ onClick, pedido }: infosPedidoProps) => {
     const dispatch = useDispatch();
-
-    const idPedido = useSelector((state: RootReducer) => state.carrinho.length);
 
     return (
         <FormContainer>
-            <h3>Pedido realizado - N°{idPedido}</h3>
+            <h3>Pedido realizado - {pedido?.orderId}</h3>
             <p>
                 Estamos felizes em informar que seu pedido já está em processo
                 de preparação e, em breve, será entregue no endereço fornecido.

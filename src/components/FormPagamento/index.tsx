@@ -1,4 +1,5 @@
-import type { EntregaProps } from '../FormEntrega';
+import type { FormEvent } from 'react';
+import type { DadosPagamento } from '../../models/Pedido';
 import {
     BtnAcao,
     ContainerCVV,
@@ -10,19 +11,41 @@ import {
 
 interface FormPagamentoProps {
     valor: number;
+    carregando?: boolean;
+    erro?: string | null;
+    onClickProximo: (dados: DadosPagamento) => void;
+    onClickVoltar: () => void;
 }
-
-type PagamentoProps = FormPagamentoProps & EntregaProps;
 
 const FormPagamento = ({
     onClickProximo,
     onClickVoltar,
     valor,
-}: PagamentoProps) => {
+    carregando = false,
+    erro = null,
+}: FormPagamentoProps) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const dados = new FormData(event.currentTarget);
+
+        onClickProximo({
+            card: {
+                name: String(dados.get('pagamento-nome')),
+                number: String(dados.get('pagamento-numero')),
+                code: Number(dados.get('pagamento-cvv')),
+                expires: {
+                    month: Number(dados.get('pagamento-mes')),
+                    year: Number(dados.get('pagamento-ano')),
+                },
+            },
+        });
+    };
+
     return (
         <FormContainer>
             <h3>Pagamento - Valor a pagar: R$ {valor.toFixed(2)}</h3>
-            <FormStyled onSubmit={onClickProximo}>
+            <FormStyled onSubmit={handleSubmit}>
                 <ContainerInput>
                     <label htmlFor="pagamento-nome">Nome do cartão</label>
                     <input
@@ -75,8 +98,11 @@ const FormPagamento = ({
                         />
                     </ContainerInput>
                 </ContainerVencimento>
-                <BtnAcao type="submit">Finalizar pagamento</BtnAcao>
+                <BtnAcao type="submit" disabled={carregando}>
+                    {carregando ? 'Enviando...' : 'Finalizar pagamento'}
+                </BtnAcao>
             </FormStyled>
+            {erro && <p>{erro}</p>}
             <BtnAcao onClick={onClickVoltar}>
                 Voltar para a edição de endereço
             </BtnAcao>

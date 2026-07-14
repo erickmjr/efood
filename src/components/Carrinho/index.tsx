@@ -13,6 +13,11 @@ import FormEntrega from '../FormEntrega';
 import FormPagamento from '../FormPagamento';
 import InfosPedido from '../InfosPedido';
 import { Overlay } from '../Overlay';
+import type {
+    DadosPagamento,
+    EnderecoEntrega,
+    PedidoResponse,
+} from '../../models/Pedido';
 
 const Carrinho = () => {
     const carrinho = useSelector((state: RootReducer) => state.carrinho);
@@ -26,6 +31,52 @@ const Carrinho = () => {
     const [showPagamento, setShowPagamento] = useState(false);
     const [showInfosPedido, setShowInfosPedido] = useState(false);
 
+    const [dadosEntrega, setDadosEntrega] = useState<EnderecoEntrega | null>(
+        null,
+    );
+    const [pedido, setPedido] = useState<PedidoResponse | null>(null);
+    const [carregando, setCarregando] = useState(false);
+    const [erro, setErro] = useState<string | null>(null);
+
+    const finalizarPedido = async (dadosPagamento: DadosPagamento) => {
+        if (!dadosEntrega) return;
+
+        setCarregando(true);
+        setErro(null);
+
+        try {
+            const resposta = await fetch(
+                'https://api-ebac.vercel.app/api/efood/checkout',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        products: carrinho.map((item) => ({
+                            id: item.id,
+                            price: item.preco,
+                        })),
+                        delivery: dadosEntrega,
+                        payment: dadosPagamento,
+                    }),
+                },
+            );
+
+            if (!resposta.ok) {
+                throw new Error('Não foi possível finalizar o pedido');
+            }
+
+            const dados: PedidoResponse = await resposta.json();
+
+            setPedido(dados);
+            setShowPagamento(false);
+            setShowInfosPedido(true);
+        } catch {
+            setErro('Não foi possível finalizar o pedido. Tente novamente.');
+        } finally {
+            setCarregando(false);
+        }
+    };
+
     return (
         <>
             {showCarrinho && (
@@ -34,14 +85,14 @@ const Carrinho = () => {
                     <CarrinhoStyled>
                         {showInfosPedido ? (
                             <InfosPedido
+                                pedido={pedido}
                                 onClick={() => setShowCarrinho(!showCarrinho)}
                             />
                         ) : showPagamento ? (
                             <FormPagamento
-                                onClickProximo={() => {
-                                    setShowPagamento(!showPagamento);
-                                    setShowInfosPedido(!showInfosPedido);
-                                }}
+                                carregando={carregando}
+                                erro={erro}
+                                onClickProximo={finalizarPedido}
                                 onClickVoltar={() => {
                                     setShowEntrega(!showEntrega);
                                     setShowPagamento(!showPagamento);
@@ -51,7 +102,8 @@ const Carrinho = () => {
                         ) : showEntrega ? (
                             <>
                                 <FormEntrega
-                                    onClickProximo={() => {
+                                    onClickProximo={(dados) => {
+                                        setDadosEntrega(dados);
                                         setShowEntrega(!showEntrega);
                                         setShowPagamento(!showPagamento);
                                     }}

@@ -1,3 +1,5 @@
+import type { FormEvent } from 'react';
+import type { EnderecoEntrega } from '../../models/Pedido';
 import {
     BtnAcao,
     CepNum,
@@ -7,14 +9,31 @@ import {
 } from './styles';
 
 export interface EntregaProps {
-    onClickProximo: () => void;
+    onClickProximo: (dados: EnderecoEntrega) => void;
     onClickVoltar: () => void;
 }
 const FormEntrega = ({ onClickProximo, onClickVoltar }: EntregaProps) => {
+    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const dados = new FormData(event.currentTarget);
+
+        onClickProximo({
+            receiver: String(dados.get('entrega-nome')),
+            address: {
+                description: String(dados.get('entrega-endereco')),
+                city: String(dados.get('entrega-cidade')),
+                zipCode: String(dados.get('entrega-cep')),
+                number: Number(dados.get('entrega-numero')),
+                complement: String(dados.get('entrega-complemento') ?? ''),
+            },
+        });
+    };
+
     return (
-        <FormContainer onSubmit={onClickProximo}>
+        <FormContainer>
             <h3>Entrega</h3>
-            <FormStyled>
+            <FormStyled onSubmit={handleSubmit}>
                 <ContainerInput>
                     <label htmlFor="entrega-nome">Quem irá receber</label>
                     <input
