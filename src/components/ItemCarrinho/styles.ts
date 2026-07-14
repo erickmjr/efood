@@ -6,7 +6,7 @@ export const ItemCarrinhoStyled = styled.div`
     gap: 8px;
     background-color: ${cores.salmaoClaro};
     width: 100%;
-    height: 100px;
+    min-height: 100px;
     padding: 0.5rem;
 
     h5 {
