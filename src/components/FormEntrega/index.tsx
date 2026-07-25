@@ -41,6 +41,8 @@ const FormEntrega = ({ onClickProximo, onClickVoltar }: EntregaProps) => {
                         type="text"
                         id="entrega-nome"
                         name="entrega-nome"
+                        minLength={3}
+                        title="Informe o nome completo de quem irá receber"
                     />
                 </ContainerInput>
                 <ContainerInput>
@@ -50,6 +52,8 @@ const FormEntrega = ({ onClickProximo, onClickVoltar }: EntregaProps) => {
                         type="text"
                         id="entrega-endereco"
                         name="entrega-endereco"
+                        minLength={5}
+                        title="Informe o endereço completo"
                     />
                 </ContainerInput>
                 <ContainerInput>
@@ -59,6 +63,8 @@ const FormEntrega = ({ onClickProximo, onClickVoltar }: EntregaProps) => {
                         type="text"
                         id="entrega-cidade"
                         name="entrega-cidade"
+                        minLength={3}
+                        title="Informe a cidade"
                     />
                 </ContainerInput>
                 <CepNum>
@@ -66,10 +72,14 @@ const FormEntrega = ({ onClickProximo, onClickVoltar }: EntregaProps) => {
                         <label htmlFor="entrega-cep">CEP</label>
                         <input
                             required
-                            type="number"
+                            type="text"
+                            inputMode="numeric"
                             id="entrega-cep"
                             name="entrega-cep"
-                            max={99999999}
+                            pattern="\d{8}"
+                            minLength={8}
+                            maxLength={8}
+                            title="Informe um CEP válido com 8 dígitos, sem hífen"
                         />
                     </ContainerInput>
                     <ContainerInput>
@@ -79,6 +89,8 @@ const FormEntrega = ({ onClickProximo, onClickVoltar }: EntregaProps) => {
                             type="number"
                             id="entrega-numero"
                             name="entrega-numero"
+                            min={1}
+                            title="Informe o número do endereço"
                         />
                     </ContainerInput>
                 </CepNum>

@@ -24,6 +24,8 @@ const FormPagamento = ({
     carregando = false,
     erro = null,
 }: FormPagamentoProps) => {
+    const anoAtual = new Date().getFullYear();
+
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -53,6 +55,8 @@ const FormPagamento = ({
                         type="text"
                         id="pagamento-nome"
                         name="pagamento-nome"
+                        minLength={3}
+                        title="Informe o nome impresso no cartão"
                     />
                 </ContainerInput>
                 <ContainerCVV>
@@ -62,19 +66,28 @@ const FormPagamento = ({
                         </label>
                         <input
                             required
-                            type="number"
+                            type="text"
+                            inputMode="numeric"
                             id="pagamento-numero"
                             name="pagamento-numero"
+                            pattern="\d{16}"
+                            minLength={16}
+                            maxLength={16}
+                            title="Informe os 16 dígitos do cartão, sem espaços"
                         />
                     </ContainerInput>
                     <ContainerInput>
                         <label htmlFor="pagamento-cvv">CVV</label>
                         <input
                             required
-                            type="number"
+                            type="text"
+                            inputMode="numeric"
                             id="pagamento-cvv"
                             name="pagamento-cvv"
-                            max={999}
+                            pattern="\d{3}"
+                            minLength={3}
+                            maxLength={3}
+                            title="Informe os 3 dígitos de segurança do cartão"
                         />
                     </ContainerInput>
                 </ContainerCVV>
@@ -86,6 +99,9 @@ const FormPagamento = ({
                             type="number"
                             id="pagamento-mes"
                             name="pagamento-mes"
+                            min={1}
+                            max={12}
+                            title="Informe um mês entre 1 e 12"
                         />
                     </ContainerInput>
                     <ContainerInput>
@@ -95,6 +111,9 @@ const FormPagamento = ({
                             type="number"
                             id="pagamento-ano"
                             name="pagamento-ano"
+                            min={anoAtual}
+                            max={anoAtual + 20}
+                            title={`Informe um ano entre ${anoAtual} e ${anoAtual + 20}`}
                         />
                     </ContainerInput>
                 </ContainerVencimento>
